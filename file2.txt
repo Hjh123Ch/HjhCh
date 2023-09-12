@@ -1,1 +1,44 @@
-123456
+<!DOCTYPE html>
+<html>
+<head>
+    <title>数列求和</title>
+</head>
+<body>
+    <h1>数列求和</h1>
+    <?php
+    function sumEven($n) {
+        $sum = 0.0;
+        for ($i = 2; $i <= $n; $i += 2) {
+            $sum += 1 / $i;
+        }
+        return $sum;
+    }
+
+    function sumOdd($n) {
+        $sum = 0.0;
+        for ($i = 1; $i <= $n; $i += 2) {
+            $sum += 1 / $i;
+        }
+        return $sum;
+    }
+
+    if (isset($_POST['submit'])) {
+        $n = $_POST['n'];
+
+        if ($n % 2 == 0) {
+            $result = sumEven($n);
+            echo "1/2 + 1/4 + ... + 1/$n = $result";
+        } else {
+            $result = sumOdd($n);
+            echo "1/1 + 1/3 + ... + 1/$n = $result";
+        }
+    }
+    ?>
+    <form method="post" action="">
+        <label for="n">请输入一个整数n：</label>
+        <input type="number" id="n" name="n">
+        <br>
+        <input type="submit" name="submit" value="计算">
+    </form>
+</body>
+</html>
